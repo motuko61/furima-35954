@@ -45,7 +45,7 @@
 
 ### Association
  - belongs_to :user
- - be_longs_to :item
+ - belongs_to :item
  - has_one :shipping
 
 ## shippings テーブル
@@ -53,12 +53,12 @@
 | Column                | Type       | Options                        |
 | ----------------------| -----------| ------------------------------ |
 | phone_number          | string     | null: false                    |
-| ship_region           | string     | null: false                    |
+| area_id               | integer    | null: false                    |
 | ship_city             | string     | null: false                    |
 | ship_address          | string     | null: false                    |
 | ship_to_address       | string     |                                |
 | postal_code           | string     | null: false                    |
-| user                  | references | null: false, foreign_key: true |
+| user                  | references | null: false, foreign_key: buyer|
 
 
 ### Association
