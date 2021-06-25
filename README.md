@@ -22,7 +22,7 @@
 
 | Column          | Type       | Options                        |
 | ----------------| -----------| -------------------------------|
-| item_name       | string     | null: false                    |
+| name            | string     | null: false                    |
 | user            | references | null: false, foreign_key: true |
 | category_id     | integer    | null: false                    |
 | price           | integer    | null: false                    |
@@ -58,7 +58,7 @@
 | ship_address          | string     | null: false                    |
 | ship_to_address       | string     |                                |
 | postal_code           | string     | null: false                    |
-| user                  | references | null: false, foreign_key: buyer|
+| buyer                 | references | null: false, foreign_key: true |
 
 
 ### Association
