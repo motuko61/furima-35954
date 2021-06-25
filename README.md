@@ -20,15 +20,17 @@
 
 ## itemsテーブル
 
-| Column      | Type       | Options                        |
-| ------------| -----------| -------------------------------|
-| item_name   | string     | null: false                    |
-| user        | references | null: false, foreign_key: true |
-| category    | string     | null: false                    |
-| price       | string     | null: false                    |
-| description | text       | null: false                    |
-| condition   | text       | null: false                    |
-
+| Column          | Type       | Options                        |
+| ----------------| -----------| -------------------------------|
+| item_name       | string     | null: false                    |
+| user            | references | null: false, foreign_key: true |
+| category_id     | integer    | null: false                    |
+| price           | integer    | null: false                    |
+| description     | text       | null: false                    |
+| condition_id    | integer    | null: false                    |
+| charge_id       | integer    | null: false                    |
+| area_id         | integer    | null: false                    |
+| days_to_ship_id | integer    | null: false                    |
 
 ### Association
 - has_one :buyer
