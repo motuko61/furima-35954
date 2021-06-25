@@ -1,24 +1,65 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## usersテーブル
 
-* Ruby version
+| Column                | Type   | Options     |
+| ----------------------| ------ | ----------- |
+| nickname              | string | null: false |
+| email                 | string | null: false |
+| encrypted_password    | string | null: false |
+| confirmation_password | string | null: false |
+| name                  | string | null: false |
+| name_kana             | string | null: false |
+| charges               | string | null: false |
+| area                  | string | null: false |
+| days_to_ship          | string | null: false |
 
-* System dependencies
+### Association
 
-* Configuration
+- has_many :items
+- has_many :buyers
 
-* Database creation
+## itemsテーブル
 
-* Database initialization
+| Column      | Type       | Options                        |
+| ------------| -----------| -------------------------------|
+| item_name   | string     | null: false                    |
+| buyer_id    | references | null: false, foreign_key: true |
+| seller_id   | references | null: false, foreign_key: true |
+| category    | string     | null: false                    |
+| price       | string     | null: false                    |
+| description | text       | null: false                    |
+| condition   | text       | null: false                    |
+| nickname    | string     | null: false                    |
 
-* How to run the test suite
+### Association
+- has_one :buyers
+- belongs_to :users
 
-* Services (job queues, cache servers, search engines, etc.)
+## buyers テーブル
 
-* Deployment instructions
+| Column                | Type   | Options     |
+| ----------------------| ------ | ----------- |
+| nickname              | string | null: false |
+| item_name             | string | null: false |
 
-* ...
+
+### Association
+ - belongs_to :users
+ - be_longs_to :items
+ - has_many :shippings
+
+## shippings テーブル
+
+| Column                | Type   | Options     |
+| ----------------------| ------ | ----------- |
+| phone_number          | string | null: false |
+| ship_region           | string | null: false |
+| ship_city             | string | null: false |
+| ship_address          | string | null: false |
+| postal_code           | string | null: false |
+
+
+
+
