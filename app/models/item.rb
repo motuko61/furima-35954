@@ -1,5 +1,13 @@
 class Item < ApplicationRecord
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :area 
+  belongs_to :condition 
+  belongs_to :category
+  belongs_to :charge
+  belongs_to :days_to_ship
   belongs_to :user
+
 
   validates :user, presence: true
   validates :name, presence: true
@@ -10,9 +18,6 @@ class Item < ApplicationRecord
   validates :charge_id, numericality: { other_than: 1 } 
   validates :area_id, numericality: { other_than: 1 } 
   validates :days_to_ship_id, numericality: { other_than: 1 } 
-
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :area, :category, :charge, :condition, :days_to_ship
 
   
 end
