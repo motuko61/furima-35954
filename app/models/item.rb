@@ -8,6 +8,8 @@ class Item < ApplicationRecord
   belongs_to :days_to_ship
   belongs_to :user
 
+  has_one_attached :image
+
 
   validates :user, presence: true
   validates :name, presence: true
