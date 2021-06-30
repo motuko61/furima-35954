@@ -19,9 +19,9 @@ class Item < ApplicationRecord
   validates :area_id, numericality: { other_than: 1 } 
   validates :days_to_ship_id, numericality: { other_than: 1 } 
 
-  with_options presence: true, numericality: { with: /\A[0-9]+\z/, message: 'is invalid' } do
-    validates :price
-    
+  with_options presence: true, format: { with: /\A[0-9]+\z/ } do
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },
+      presence: { message: 'is invalid' } 
   end
   
   
