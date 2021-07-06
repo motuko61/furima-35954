@@ -12,7 +12,7 @@ RSpec.describe BuyerShipping, type: :model do
 
   
       context '登録できるとき' do
-        it '郵便番号、都道府県、市区町村、番地、電話番号、カード番号、有効期限、セキュリティコードがあれば登録できる' do
+        it '郵便番号、都道府県、市区町村、番地、電話番号、tokenがあれば登録できる' do
          expect(@buyer_shipping).to be_valid
         end  
  
@@ -77,31 +77,12 @@ RSpec.describe BuyerShipping, type: :model do
           expect(@buyer_shipping.errors.full_messages).to include("Phone number is invalid")
         end  
         
-        #it 'カード番号がなければ登録できない' do
-         # @buyer_shipping.card_number = ''
-         # @buyer_shipping.valid?
-         # expect(@buyer_shipping.errors.full_messages).to include("")
-        #end
+        it 'tokenが空では登録できない' do
+          @buyer_shipping.token = ''
+          @buyer_shipping.valid?
+          expect(@buyer_shipping.errors.full_messages).to include("Token can't be blank")
+        end  
         
-        #it '有効期限がなければ登録できない' do
-         # @buyer_shipping.year = ''
-         # @buyer_shipping.valid?
-          #expect(@buyer_shipping.errors.full_messages).to include("")
-        #end
-        
-        #it '有効期限がなければ登録できない' do
-          #@buyer_shipping.month = ''
-          #@buyer_shipping.valid?
-          #expect(@buyer_shipping.errors.full_messages).to include("")
-        #end
-
-        #it 'セキュリティコードがなければ登録できない' do
-          #it '有効期限がなければ登録できない' do
-           # @buyer_shipping.cvc = ''
-            #@buyer_shipping.valid?
-            #expect(@buyer_shipping.errors.full_messages).to include("")
-          #end
-        #end  
       end      
   end  
 end

@@ -6,9 +6,6 @@ FactoryBot.define do
     ship_city { '東京都' }
     ship_address { '1-1' }
     ship_to_address { '東京ハイツ' }
-    #card_number { '4242424242424242' }
-    #month { '22' }
-    #year { '1' }
-    #cvc { '123' }
+    token {"tok_abcdefghijk00000000000000000"}
   end
 end

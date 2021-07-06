@@ -1,12 +1,13 @@
 class BuyerShipping
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :phone_number, :area_id, :ship_city, :ship_address, :ship_to_address, :postal_code
+  attr_accessor :user_id, :item_id, :phone_number, :area_id, :ship_city, :ship_address, :ship_to_address, :postal_code, :token
 
   with_options presence:true do
     validates :user_id
     validates :item_id
     validates :ship_city
     validates :ship_address
+    validates :token
     
   end  
   validates :area_id, numericality: { other_than: 1 }
