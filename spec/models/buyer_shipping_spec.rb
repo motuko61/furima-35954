@@ -80,6 +80,18 @@ RSpec.describe BuyerShipping, type: :model do
         @buyer_shipping.valid?
         expect(@buyer_shipping.errors.full_messages).to include("Token can't be blank")
       end
+
+      it 'user_idが空だと登録できない' do
+        @buyer_shipping.user_id = ''
+        @buyer_shipping.valid?
+        expect(@buyer_shipping.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'item_idが空だと登録できない' do
+        @buyer_shipping.item_id = ''
+        @buyer_shipping.valid?
+        expect(@buyer_shipping.errors.full_messages).to include("Item can't be blank")
+      end
     end
   end
 end

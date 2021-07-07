@@ -1,9 +1,9 @@
 class BuyersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_item, only: [:create, :index]
 
   def index
     @buyer_shipping = BuyerShipping.new
-    @item = Item.find(params[:item_id])
     if current_user.id == @item.user_id
       redirect_to root_path
     elsif @item.buyer.present?
@@ -11,11 +11,7 @@ class BuyersController < ApplicationController
     end
   end
 
-  def new
-  end
-
   def create
-    @item = Item.find(params[:item_id])
     @buyer_shipping = BuyerShipping.new(buyer_params)
     if @buyer_shipping.valid?
       pay_item
@@ -29,7 +25,7 @@ class BuyersController < ApplicationController
   private
 
   def buyer_params
-    params.require(:buyer_shipping).permit(:phone_number, :area_id, :ship_city, :ship_address, :ship_to_address, :buyer, :postal_code, :user_id).merge(
+    params.require(:buyer_shipping).permit(:phone_number, :area_id, :ship_city, :ship_address, :ship_to_address, :postal_code).merge(
       user_id: current_user.id, item_id: params[:item_id], token: params[:token]
     )
   end
@@ -41,5 +37,9 @@ class BuyersController < ApplicationController
       card: buyer_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 end
