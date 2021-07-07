@@ -6,6 +6,6 @@ FactoryBot.define do
     ship_city { '東京都' }
     ship_address { '1-1' }
     ship_to_address { '東京ハイツ' }
-    token {"tok_abcdefghijk00000000000000000"}
+    token { 'tok_abcdefghijk00000000000000000' }
   end
 end
