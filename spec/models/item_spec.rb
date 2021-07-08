@@ -60,7 +60,7 @@ RSpec.describe Item, type: :model do
         it '価格の情報がなければ登録できない' do
           @item.price = ''
           @item.valid?
-          expect(@item.errors.full_messages).to include('Price is invalid')
+          expect(@item.errors.full_messages).to include("Price is not a number")
         end
         it '価格は半角数値でなければ登録できない' do
           @item.price = 'aaaa'
