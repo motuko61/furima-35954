@@ -6,11 +6,11 @@ class Item < ApplicationRecord
   belongs_to :charge
   belongs_to :days_to_ship
   belongs_to :user
-  has_one_attached :image
+  has_many_attached :images
   has_one :buyer
 
   with_options presence: true do
-    validates :image
+    validates :images
     validates :user
     validates :name
     validates :description
